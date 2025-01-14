@@ -1,169 +1,121 @@
 import React from "react";
-import {
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  AppBar,
-  Toolbar,
-  Link as MuiLink,
-} from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Typography, Card, CardContent, Button } from "@mui/material";
 
-const ideas = [
-  {
-    id: 1,
-    title: "AI 카피라이터 (AI Copywriter)",
-    description: "수 초 만에 광고 문구를 제작해주는 인공지능 카피라이터",
-    image: "https://images.unsplash.com/photo-1455390582262-044cdead277a", // 이미지 URL
-  },
-  {
-    id: 2,
-    title: "로컬 스토리메이커",
-    description: "지역의 매력을 한 문장에 담아내는 인공지능 스토리메이커",
-    image: "https://images.unsplash.com/photo-1535189043414-47a3c49a0bed", // 이미지 URL
-  },
-  {
-    id: 3,
-    title: "커플 및 결혼 여행 정보",
-    description:
-      "커플 및 결혼한 사람들에게 소중한 순간을 기억에 남게 하는 인공지능 카피라이터",
-    image: "https://images.unsplash.com/photo-1699341381878-4712514e8966", // 이미지 URL
-  },
-  {
-    id: 4,
-    title: "미식 여행 정보",
-    description: "지역의 맛과 이야기를 담아내는 인공지능 카피라이터",
-    image: "https://images.unsplash.com/photo-1631024723408-1d1c95735cef", // 이미지 URL
-  },
-  {
-    id: 5,
-    title: "사진 여행지 정보",
-    description: "인기 촬영 명소를 추천해주는 인공지능 카피라이터",
-    image: "https://images.unsplash.com/photo-1706431593003-77f796098bc3", // 이미지 URL
-  },
-  {
-    id: 6,
-    title: "힐링 여행 정보",
-    description: "몸과 마음을 치유하는 웰니스 관광지와 스파를 위한 카피라이터",
-    image: "https://images.unsplash.com/photo-1733822842270-9fcb181c5f13", // 이미지 URL
-  },
-];
+function Home() {
+  const items = [
+    {
+      title: "[감성챗봇]한줄생원",
+      description: "독창적인 영감을 위한 한 줄을 찾아보세요.",
+      actionText: "한 줄 찾기",
+      path: "/ai-chatbot",
+    },
+    {
+      title: "AI 카피라이터",
+      description: "한 줄로 세상을 움직이는 창의적 메시지를 만들어보세요.",
+      actionText: "카피라이터 탐험하기",
+      path: "/ai-copywriter",
+    },
+    {
+      title: "로컬 스토리메이커",
+      description: "지역의 매력을 한 줄로 표현하는 특별한 경험.",
+      actionText: "스토리메이커 열어보기",
+      path: "/local-storymaker",
+    },
+  ];
 
-function Home({ darkMode }) {
   return (
-    <Box>
-      {/* 상단 네비게이션 */}
-      <AppBar
-        position="static"
-        sx={{ backgroundColor: darkMode ? "#333333" : "#673AB7" }}
-      ></AppBar>
-
-      {/* 상단 웰컴 섹션 */}
-      <Box sx={{ padding: 3, textAlign: "center" }}>
-        <Typography
-          variant="h3"
-          sx={{
-            fontWeight: "bold",
-            color: darkMode ? "#FFFFFF" : "#673AB7",
-            mt: 3,
-          }}
-        >
-          Welcome 환영합니다 👋
-        </Typography>
-        <Typography
-          variant="h6"
-          sx={{
-            color: darkMode ? "#BDBDBD" : "gray",
-            mb: 4,
-          }}
-        >
-          한줄 엔터프라이즈 인스파이로AI(InspiroAI)입니다.
-        </Typography>
-      </Box>
-
-      {/* 카드 섹션 */}
-      <Grid container spacing={4} sx={{ padding: 3 }}>
-        {ideas.map((idea) => (
-          <Grid item xs={12} sm={6} md={4} key={idea.id}>
-            <Card
-              sx={{
-                backgroundColor: darkMode ? "#1E1E1E" : "#FFFFFF",
-                color: darkMode ? "#FFFFFF" : "#000000",
-                borderRadius: "15px",
-                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
-                overflow: "hidden",
-              }}
-            >
-              <img
-                src={idea.image}
-                alt={idea.title}
-                style={{ width: "100%", height: "360px", objectFit: "cover" }}
-              />
-              <CardContent>
-                <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                  {idea.title}
-                </Typography>
-                <Typography variant="body2" sx={{ mt: 1, mb: 2 }}>
-                  {idea.description}
-                </Typography>
-                <Button
-                  component={Link}
-                  to={`/detail/${idea.id}`}
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "#673AB7",
-                    color: "#FFFFFF",
-                    textTransform: "none",
-                    fontWeight: "bold",
-                    borderRadius: "20px",
-                    padding: "8px 16px",
-                    "&:hover": {
-                      backgroundColor: "#5E35B1",
-                    },
-                  }}
-                >
-                  자세히 보기
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-
-      {/* 하단 이미지 추가 */}
-      <Box
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+        padding: "20px",
+        gap: 3,
+        backgroundColor: "background.default",
+        color: "text.primary",
+      }}
+    >
+      {/* 메인 타이틀 */}
+      <Typography
+        variant="h4"
         sx={{
-          mt: 5,
+          fontWeight: "bold",
           textAlign: "center",
-          backgroundColor: darkMode ? "#2C2C2C" : "#f5f5f5",
-          padding: 2,
-          borderRadius: "10px",
+          marginBottom: "20px",
         }}
       >
-        <img
-          src="https://images.unsplash.com/photo-1554040305-68021c3fc4f1"
-          alt="배경 이미지"
-          style={{
-            width: "100%",
-            maxWidth: "600px",
-            borderRadius: "20px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
-          }}
-        />
-        <Typography
-          variant="caption"
+        Insp에 오신 것을 환영하오!
+      </Typography>
+
+      {/* 서비스 카드 목록 */}
+      {items.map((item, index) => (
+        <Card
+          key={index}
           sx={{
-            display: "block",
-            color: darkMode ? "#BDBDBD" : "gray",
-            mt: 1,
+            width: "100%",
+            maxWidth: "400px",
+            borderRadius: "10px",
+            backgroundColor: "background.paper",
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+            padding: "20px",
+            transition: "transform 0.3s ease-in-out",
+            "&:hover": {
+              transform: "scale(1.05)",
+              boxShadow: "0 6px 15px rgba(0, 0, 0, 0.2)",
+            },
           }}
         >
-          InspiroAI가 선사하는 새로운 영감의 순간 🌟
-        </Typography>
-      </Box>
+          <CardContent>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: "bold",
+                marginBottom: "10px",
+                color: "primary.main",
+              }}
+            >
+              {item.title}
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{
+                marginBottom: "20px",
+                color: "text.secondary",
+              }}
+            >
+              {item.description}
+            </Typography>
+            <Button
+              variant="contained"
+              href={item.path}
+              sx={{
+                backgroundColor: "primary.main",
+                color: "#FFFFFF",
+                "&:hover": {
+                  backgroundColor: "primary.dark",
+                },
+              }}
+            >
+              {item.actionText}
+            </Button>
+          </CardContent>
+        </Card>
+      ))}
+
+      {/* 하단 안내 */}
+      <Typography
+        variant="body2"
+        sx={{
+          marginTop: "20px",
+          color: "text.secondary",
+          textAlign: "center",
+          fontStyle: "italic",
+        }}
+      >
+        "%%세상은 한 줄로도 충분히 변할 수 있소.%%"
+      </Typography>
     </Box>
   );
 }
